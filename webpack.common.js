@@ -1,11 +1,14 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const PUBLIC_PATH = 'http://localhost:8080/';
 
 module.exports = {
   output: {
     filename: '[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: PUBLIC_PATH
   },
   module: {
     rules: [
@@ -20,6 +23,16 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
-    })
+    }),
+    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: 'commuter',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'sw.js',
+        minify: true,
+        navigateFallback: PUBLIC_PATH + 'index.html',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+      }
+    ),
   ]
 };

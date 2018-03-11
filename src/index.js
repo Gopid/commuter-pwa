@@ -1,2 +1,5 @@
 import './styles.css';
-console.log('something else');
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+}
