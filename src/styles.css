@@ -1,6 +1,15 @@
+/* check how to use rems properly */
+/* implement add to homescreen functionality */
+/* https://stackoverflow.com/questions/44522268/sw-precache-push-notification-listener/44524987#44524987 */
+/* https://firebase.google.com/docs/cloud-messaging/js/client */
+/* this is a problem with one of the packages, not the firebase-tool because the files are generated successfully but the npm install fails */
+/* try running firebase init and create a new project, then fix this one */
+/* create a deployment process with travis */
+
 * {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 body {
@@ -22,10 +31,20 @@ p {
 }
 
 .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: .8rem 1rem;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 600px;
     width: 100%;
     background: #fff;
     box-shadow: 1px 1px 16px #ccc;
+}
+
+.circle {
+    background: #ccc;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
 }

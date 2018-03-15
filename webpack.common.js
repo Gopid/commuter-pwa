@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-const PUBLIC_PATH = (process.env.NODE_ENV === 'production') ? 'https://commuter-6f37d.firebaseapp.com/' : 'http://localhost:8080';
+const PUBLIC_PATH = (process.env.NODE_ENV === 'production') ? 'https://commuter-6f37d.firebaseapp.com/' : 'http://localhost:8080/';
 
 module.exports = {
   output: {
