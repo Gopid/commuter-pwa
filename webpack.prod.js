@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default
 
 module.exports = merge(common, {
   module: {
@@ -27,6 +28,7 @@ module.exports = merge(common, {
   },
   plugins: [
     new UglifyJSPlugin(),
-    new ExtractTextPlugin('styles.css') 
+    new ExtractTextPlugin('styles.css'),
+    new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i })
   ]
 });
