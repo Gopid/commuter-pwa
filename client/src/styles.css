@@ -1,20 +1,17 @@
-/* check how to use rems properly */
-/* implement add to homescreen functionality */
-/* https://stackoverflow.com/questions/44522268/sw-precache-push-notification-listener/44524987#44524987 */
-/* https://firebase.google.com/docs/cloud-messaging/js/client */
-/* this is a problem with one of the packages, not the firebase-tool because the files are generated successfully but the npm install fails */
-/* try running firebase init and create a new project, then fix this one */
-/* create a deployment process with travis */
-
 * {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background:#e0e0e0;
     margin: 0;
+    height: 100%;
 }
 
 p {
@@ -23,7 +20,10 @@ p {
 
 #direction {
     background: #FD8469;
-    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
 }
 
 #details {
@@ -40,6 +40,49 @@ p {
     width: 100%;
     background: #fff;
     box-shadow: 1px 1px 16px #ccc;
+}
+
+.direction__container {
+    max-width: 600px;
+    width: 100%;
+}
+
+.direction__title {
+    color: #fff;
+    text-align: center;
+    font-weight: 400;
+    font-size: 1.8rem;
+}
+
+.direction__options {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.direction__icon {
+    border-radius: 50%;
+    box-shadow: .1rem .1rem .6rem rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    transform-origin: center;
+}
+
+.direction__icon:hover {
+    transform: scale(1.1);
+    box-shadow: .15rem .15rem .8rem rgba(0, 0, 0, 0.3);
+}
+
+.direction__button {
+    margin: 1rem auto 0 auto;
+    display: block;
+    background: #009688;
+    color: #fff;
+    border-radius: .9rem;
+    padding: .4rem .9rem;
+    cursor: pointer;
 }
 
 .circle {
