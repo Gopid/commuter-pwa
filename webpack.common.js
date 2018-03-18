@@ -32,7 +32,7 @@ module.exports = {
         filename: 'sw.js',
         minify: true,
         navigateFallback: PUBLIC_PATH + 'index.html',
-        staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/, /\.(jpe?g|png|gif|svg|js|css|html)$/],
+        staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/, /\.(jpe?g|png|gif|svg|js|css)$/],
       }
     ),
     new CopyWebpackPlugin([
