@@ -32,12 +32,14 @@ module.exports = {
         filename: 'sw.js',
         minify: true,
         navigateFallback: PUBLIC_PATH + 'index.html',
+        importScripts: [PUBLIC_PATH + 'firebase-messaging-sw.js'],
         staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/, /\.(jpe?g|png|gif|svg|js|css)$/],
       }
     ),
     new CopyWebpackPlugin([
-      {from:'./src/img',to:'img'},
-      {from:'./src',to:'', ignore: ['*.js', '*.css']}
+      {from: './src/img', to: 'img'},
+      {from: './src',to:'', ignore: ['*.js', '*.css']},
+      {from: './src/fcm-push-notification.js'}
     ])
   ]
 };
