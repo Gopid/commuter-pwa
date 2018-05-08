@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
-// Futár utca stop id: BKK_F02550
-// 20E routeId: BKK_0205
+const fetch = require('node-fetch')
+const countdown = require('countdown')
+
 module.exports = (stopId, routeId) => {
     return new Promise((resolve, reject) => {
         fetch(`http://futar.bkk.hu/bkk-utvonaltervezo-api/ws/otp/api/where/arrivals-and-departures-for-stop.json?stopId=${stopId}&onlyDepartures=1&minutesBefore=0&minutesAfter=20`)
@@ -36,7 +36,7 @@ module.exports = (stopId, routeId) => {
                     iconDisplayText,
                     textColor,
                     color,
-                    predictedArrivalTime: arrivingVechicles[0].predictedArrivalTime
+                    predictedArrivalTime: countdown(new Date(), arrivingVechicles[0].predictedArrivalTime * 1000).minutes
                 })
             })
             .catch(error => {

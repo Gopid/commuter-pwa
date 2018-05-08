@@ -32,7 +32,7 @@ module.exports = {
         filename: 'sw.js',
         minify: true,
         navigateFallback: PUBLIC_PATH + 'index.html',
-        importScripts: [PUBLIC_PATH + 'firebase-messaging-sw.js'],
+        importScripts: [PUBLIC_PATH + 'fcm-push-notification.js'],
         staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/, /\.(jpe?g|png|gif|svg|js|css)$/],
       }
     ),

@@ -36,8 +36,7 @@ messaging.requestPermission()
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             };
-
-            fetch('/api/startjourney', {method: 'post', body, headers});
+            fetch('/api/startjourney', {method: 'POST', body, headers});
         } else {
             console.log('No Instance ID token available. Request permission to generate one.');
         }
@@ -45,3 +44,7 @@ messaging.requestPermission()
     .catch(function(err) {
         console.log('Unable to get permission to notify.', err);
     });
+
+messaging.onMessage((payload) => {
+    // display the information in the app
+});

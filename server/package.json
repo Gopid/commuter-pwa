@@ -13,7 +13,9 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
+    "countdown": "^2.6.0",
     "express": "^4.16.3",
-    "node-fetch": "^2.1.1"
+    "firebase-admin": "^5.12.0",
+    "node-fetch": "^2.1.2"
   }
 }
