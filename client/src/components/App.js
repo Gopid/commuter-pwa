@@ -1,4 +1,5 @@
 import {h} from 'preact';
+import ToggleButton from './ToggleButton';
 
 const App = () => (
     <section id="app">
@@ -9,7 +10,10 @@ const App = () => (
                     <img className="direction__icon" src="/img/home.svg" alt="" />
                     <img className="direction__icon" src="/img/office.svg" alt="" />
                 </div>
-                <button className="direction__button">Start sending notifications</button>
+                <ToggleButton
+                    onContent={() => <span>Start sending notifications</span>}
+                    offContent={() => <span>Pause sending notifications</span>}
+                />
             </div>
         </section>
         <section id="details">
