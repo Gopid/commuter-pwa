@@ -14,6 +14,11 @@ body {
     height: 100%;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    color: #333;
+    font-weight: normal;
+}
+
 p {
     margin: 0;
 }
@@ -32,6 +37,14 @@ p {
 
 #details {
     padding: 1rem .4rem;
+}
+
+.details__title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 0rem;
+    margin-bottom: 1.5rem;
 }
 
 .card {
@@ -56,6 +69,8 @@ p {
     text-align: center;
     font-weight: 400;
     font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
 }
 
 .direction__options {
@@ -79,6 +94,15 @@ p {
     box-shadow: .15rem .15rem .8rem rgba(0, 0, 0, 0.3);
 }
 
+.direction__icon--active::after {
+    box-shadow: inset 3px 3px 10px 0 #000000;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
 .direction__button {
     margin: 1rem auto 0 auto;
     display: block;
