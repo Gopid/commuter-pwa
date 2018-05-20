@@ -3,6 +3,6 @@ import {h, render} from 'preact';
 import fireBaseMessaging from './firebaseMessaging';
 import App from './components/App';
 
-fireBaseMessaging();
+export const messaging = fireBaseMessaging();
 
 render(<App />, document.body);

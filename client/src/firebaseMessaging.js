@@ -44,8 +44,6 @@ export default () => {
         .catch(function() {
             // Unable to get permission to notify
         });
-    
-    messaging.onMessage(() => {
-        // display the information in the app
-    });
+
+    return messaging;
 }
