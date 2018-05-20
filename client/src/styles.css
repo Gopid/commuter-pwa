@@ -59,6 +59,14 @@ p {
     box-shadow: 1px 1px 16px #ccc;
 }
 
+.card__icon {
+    background: #ccc;
+    border: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
 .direction__container {
     max-width: 600px;
     width: 100%;
@@ -111,11 +119,4 @@ p {
     border-radius: .9rem;
     padding: .4rem .9rem;
     cursor: pointer;
-}
-
-.circle {
-    background: #ccc;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
 }
