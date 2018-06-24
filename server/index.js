@@ -17,50 +17,59 @@ app.use(cors())
 app.use(bodyParser.json())
 
 let intervalId = 0;
+let lastArrivalSent = null;
 
 const resetJourney = () => {
     clearInterval(intervalId)
-    // reset state (current arrival time, last values sent to FCM)
 }
-// const journeyDetails = [
-//   {stopId: 'F02550', routeIds: []},
-//   {stopId: 'F02550', routeIds: []}
-// ]
+
+const sendStopTimes = (token, stopId, routeId, timeLastSent) => {
+    return getStopTimes(stopId, routeId)
+        .then(data => {
+            if (timeLastSent === data.predictedArrivalTime) return timeLastSent
+
+            const arrival = {
+                notification: {
+                    title: data.stopHeadsign,
+                    body: `'${data.predictedArrivalTime}`,
+                    icon: '',
+                    tag: 'commuter-info'
+                }
+            };
+            console.log('arrival', arrival);
+            lastArrivalSent = arrival;
+
+            admin.messaging().sendToDevice(token, arrival)
+
+            return data.predictedArrivalTime
+        })
+        .catch(error => {
+            console.error(error)
+            clearInterval(intervalId)
+            // handle the different error scenarios
+        })
+}
+
 app.post('/api/startjourney', (req, res) => {
     const {token, stopId, routeId} = req.body
     let timeLastSent = null;
 
-    if (intervalId) {
-        resetJourney()
-        return res.status(200).json({message: ''})
-    }
+    if (intervalId) resetJourney()
+
+    sendStopTimes(token, stopId, routeId)
 
     intervalId = setInterval(() => {
-        getStopTimes(stopId, routeId)
-            .then(data => {
-                if (timeLastSent === data.predictedArrivalTime) return
-
-                const payload = {
-                    notification: {
-                        title: data.stopHeadsign,
-                        body: `'${data.predictedArrivalTime}`,
-                        icon: '',
-                        tag: 'commuter-info'
-                    }
-                };
-
-                admin.messaging().sendToDevice(req.body.token, payload).then(() => timeLastSent = data.predictedArrivalTime)
-            })
-            .catch(error => {
-                console.error(error)
-                clearInterval(intervalId)
-                // handle the different error scenarios
-            })
+        sendStopTimes(token, stopId, routeId, timeLastSent)
+            .then((timeSent) => timeLastSent = timeSent)
     }, 5000)
+
+    res.status(200).json({success: true})
 })
 
-app.get('/api/stopjourney', (req,res) => {
-    resetJourney(req.body.token)
+app.post('/api/stopjourney', (req,res) => {
+    resetJourney()
+
+    res.status(200).json({success: true})
 })
 
 app.listen(5000, () => console.log('Example app listening on port 5000!'))

@@ -81,7 +81,7 @@ p {
     margin-bottom: 1.5rem;
 }
 
-.direction__options {
+.select-img {
     height: 100%;
     width: 100%;
     display: flex;
@@ -89,7 +89,7 @@ p {
     align-items: center;
 }
 
-.direction__icon {
+.select-img__icon {
     border-radius: 50%;
     box-shadow: .1rem .1rem .6rem rgba(0, 0, 0, 0.4);
     cursor: pointer;
@@ -97,12 +97,12 @@ p {
     transform-origin: center;
 }
 
-.direction__icon:hover {
+.select-img__icon:hover {
     transform: scale(1.1);
     box-shadow: .15rem .15rem .8rem rgba(0, 0, 0, 0.3);
 }
-
-.direction__icon--active::after {
+/* 
+.select-img__icon--selected::after {
     box-shadow: inset 3px 3px 10px 0 #000000;
     content: '';
     display: block;
@@ -110,7 +110,7 @@ p {
     position: absolute;
     top: 0;
     width: 100%;
-}
+} */
 .direction__button {
     margin: 1rem auto 0 auto;
     display: block;

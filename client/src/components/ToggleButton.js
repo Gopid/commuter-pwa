@@ -6,7 +6,14 @@ class ToggleButton extends Component {
         this.state = {isOn: false};
     }
     toggle = () => {
-        this.setState(prevState => ({isOn: !prevState.isOn}));
+        this.setState(prevState => {
+            if (prevState.isOn) {
+                this.props.offHandler();
+            } else {
+                this.props.onHandler();
+            }
+            return {isOn: !prevState.isOn}
+        });
     }
     render () {
         return (

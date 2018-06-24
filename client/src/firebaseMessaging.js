@@ -19,31 +19,6 @@ export default () => {
         navigator.serviceWorker.register('./sw.js')
             .then((registration) => messaging.useServiceWorker(registration));
     }
-    
-    messaging.requestPermission()
-        .then(function() {
-            // Notification permission granted
-            return messaging.getToken();
-        })
-        .then((token) => {
-            if (token) {
-                const body = JSON.stringify({
-                    token,
-                    stopId: 'BKK_F02550',
-                    routeId: 'BKK_0205',
-                });
-                const headers = {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                };
-                fetch('/api/startjourney', {method: 'POST', body, headers});
-            } else {
-                // No Instance ID token available. Request permission to generate one
-            }
-        })
-        .catch(function() {
-            // Unable to get permission to notify
-        });
 
     return messaging;
 }
